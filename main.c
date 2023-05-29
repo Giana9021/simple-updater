@@ -12,6 +12,8 @@ int main(int argc, char** argv) {
     }
     char* new = argv[1];
     char* old = argv[2];
+    
+    Sleep(2000); // Sleep 2sec
 
     if(!DeleteFileA(old))
         printf("1 Error: %lu\n", GetLastError());
