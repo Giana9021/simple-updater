@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <windows.h>
 
 int main(int argc, char** argv) {
@@ -12,6 +13,10 @@ int main(int argc, char** argv) {
     }
     char* new = argv[1];
     char* old = argv[2];
+    char* cmd = malloc(strlen(old) + 6 + 1);
+    memset(cmd, 0, strlen(old) + 6 + 1);
+    strcpy(cmd, "start ");
+    strcat(cmd, old);
     
     Sleep(2000); // Sleep 2sec
 
@@ -21,4 +26,7 @@ int main(int argc, char** argv) {
         printf("2 Error: %lu\n", GetLastError());
     if(!DeleteFileA(new))
         printf("3 Error: %lu\n", GetLastError());
+    
+    system(cmd);
+    free(cmd);
 }
